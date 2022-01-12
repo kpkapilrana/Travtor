@@ -10,6 +10,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FlightComponent } from './flight/flight.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { CruiseComponent } from './cruise/cruise.component';
+import { CarListComponent } from './car-list/car-list.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { CruiseComponent } from './cruise/cruise.component';
       { path: 'flight', component: FlightComponent },
       { path: 'hotel', component: HotelComponent },
       { path: 'cruise', component: CruiseComponent },
+      { path: 'cars', component: CarListComponent },
     ]),
   ],
   declarations: [
@@ -31,6 +33,7 @@ import { CruiseComponent } from './cruise/cruise.component';
     FlightComponent,
     HotelComponent,
     CruiseComponent,
+    CarListComponent,
   ],
   bootstrap: [AppComponent],
 })

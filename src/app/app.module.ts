@@ -11,19 +11,27 @@ import { FlightComponent } from './flight/flight.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { CruiseComponent } from './cruise/cruise.component';
 import { CarListComponent } from './car-list/car-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: CarsSearchComponent },
-      { path: 'search', component: CarsSearchComponent },
+      { path: '', redirectTo:"search", pathMatch: 'full'},
+      { path: 'search', component: CarsSearchComponent,
+      children:[
+        { path: 'cars', component: CarListComponent },
+      ]
+    },
       { path: 'flight', component: FlightComponent },
       { path: 'hotel', component: HotelComponent },
       { path: 'cruise', component: CruiseComponent },
-      { path: 'cars', component: CarListComponent },
     ]),
+    BrowserAnimationsModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,

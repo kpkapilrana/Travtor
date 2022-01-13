@@ -1,5 +1,59 @@
-<p>Car Search component comes here</p>
+<!-- <p>Car Search component comes here</p>
 <p>On search button render Car Listing component</p>
-<p>Provide sort on cars</p>
-
-<button>Search</button>
+<p>Provide sort on cars</p> -->
+<form class="example-form">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Pick Up Location</mat-label>
+      <input matInput value="">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>PICK UP DATE</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>DROP OFF DATE</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>PICK UP TIME</mat-label>
+        <input type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" appearance="outline">
+        <mat-option *ngFor="let slot of slots" [value]="slot">
+          {{slot}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>DROP OFF TIME</mat-label>
+        <input type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [matAutocomplete]="auto">
+    </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete" appearance="outline">
+        <mat-label>DROP OFF TIME</mat-label>
+        <mat-option *ngFor="let slot of slots" [value]="slot">
+          {{slot}}
+        </mat-option>
+      </mat-autocomplete>  
+    
+    <mat-form-field appearance="outline">
+        <mat-label>Age of Driver</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let age of ages" [value]="age">
+            {{age}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </form>
+<button mat-raised-button color="primary">Search Rental Cars</button>
+<router-outlet></router-outlet>

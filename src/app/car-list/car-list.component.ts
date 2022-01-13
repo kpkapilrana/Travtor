@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { car_list } from '../car-itineraries';
 
 @Component({
   selector: 'app-car-list',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./car-list.component.css']
 })
 export class CarListComponent implements OnInit {
-
-  constructor() { }
+  cars:any[];
+  constructor() {
+    this.cars = car_list.CarItineraries;
+   }
 
   ngOnInit(): void {
   }

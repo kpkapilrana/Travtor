@@ -8,3 +8,8 @@ can be found in the LICENSE file at https://angular.io/license
 .button i.material-icons {
   color: white;
 }
+
+.query{
+  color: #fff;
+  margin: 0;
+}

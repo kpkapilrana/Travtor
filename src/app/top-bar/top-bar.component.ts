@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Query } from '../shared/models/query.model';
+import { CarService } from '../shared/services/car.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -6,7 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent {
+  title$;
+  searchQuery$;
+  constructor(private carService:CarService, private router:Router){
+    this.title$=this.carService.getTitle();
+      this.searchQuery$=this.carService.getSearchQuery();
+  }
 
+  goPrevious(){
+    this.router.navigate(['/cars']);
+  }
 }
 
 

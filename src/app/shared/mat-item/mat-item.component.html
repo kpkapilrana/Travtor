@@ -1,27 +1,26 @@
-<div class="content">
-    <mat-card class="mat-elevation-z4">
-        <!-- <div fxLayout="row wrap" fxLayoutGap="16px grid"> -->
-            <!-- <div fxFlex=""> -->
-                <mat-card-header>
-                <img class="card-avatar" [src]="car.vehicle.image">
-              <mat-card-title>{{car.vehicle.type}}</mat-card-title>
-              <mat-card-subtitle>{{car.vehicle.name}}</mat-card-subtitle>
-            </mat-card-header>
-        <!-- </div> -->
-        <!-- </div> -->
-        <!-- <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header> -->
-      <mat-card-content>
-        <p>
-          The Himalayas is a mountain range in Asia.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+<mat-card >
+        <div class="row wrap">
+        <img fxFlex="25%" mat-card-md-image [src]="car.vehicle.image" >
+        <mat-card-title-group fxFlex>
+            <div class="row wrap">
+          <mat-card-title>{{car.vehicle.type}}</mat-card-title>
+          <mat-card-subtitle>{{car.vehicle.name}}</mat-card-subtitle>
+              <div fxFlex="24%">  <mat-icon aria-hidden="false" aria-label="People icon">people</mat-icon><span class="aligned-with-icon">{{ car.vehicle.specifications.passengerCapacity}} </span> </div>
+              <div fxFlex="24%"><mat-icon aria-hidden="false" aria-label="People icon">luggage</mat-icon><span class="aligned-with-icon">{{ car.vehicle.specifications.baggageCapacity}} </span></div>
+              <div  fxFlex><mat-icon aria-hidden="false" aria-label="People icon">network_check</mat-icon><span class="aligned-with-icon">Unlimited Miles </span></div>
+          </div>
+        </mat-card-title-group>
+        </div>
+        <mat-card-content>
+          <!-- {{longText}} -->
+       <div class="cancel">  {{  car.cancellationDetails.isCancellationFree ? 'Free Cancellation until '+ (car.cancellationDetails.freeCancellationEndDate | date:'EE, MMMM d, y') : 'Cancellation fees may apply' }} </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+        <div> <b class="perday"> {{ car.fare.perDay | currency}} </b>  avg/day </div>
+        <div> Total (23 days) <b>{{ (car.fare.perDay*23) | currency }}</b> </div>
+            <!-- <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button> -->
+          </mat-card-actions>
+      </mat-card>
+  <!-- </div> -->

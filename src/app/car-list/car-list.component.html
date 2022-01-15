@@ -1,8 +1,14 @@
 <div class="content">
-    <h1>Cars List</h1>
+    <!-- <h1>Cars List</h1> -->
 <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of cars">
+    <div fxFlex="100%">cars found</div>
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of (cars$|async)">
         <app-mat-item [car]="car"></app-mat-item>
     </div>
 </div>
+<!-- <button mat-raised-button color="primary" (click)="onSort()">Sort</button> -->
+<mat-button-toggle-group color="primary" class="floatButton" name="fontStyle" aria-label="Font Style" (change)="onSort($event)">
+    <mat-button-toggle value="sort">Sort</mat-button-toggle>
+    <mat-button-toggle value="italic">Filter</mat-button-toggle>
+  </mat-button-toggle-group>
 </div>

@@ -13,6 +13,7 @@ import { CruiseComponent } from './cruise/cruise.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { SortComponent } from './sort/sort.component';
 
 
 @NgModule({
@@ -21,14 +22,12 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo:"search", pathMatch: 'full'},
-      { path: 'search', component: CarsSearchComponent,
-      children:[
-        { path: 'cars', component: CarListComponent },
-      ]
-    },
-      { path: 'flight', component: FlightComponent },
-      { path: 'hotel', component: HotelComponent },
-      { path: 'cruise', component: CruiseComponent },
+      { path: 'search', component: CarsSearchComponent},
+    { path: 'flight', component: FlightComponent },
+    { path: 'hotel', component: HotelComponent },
+    { path: 'cruise', component: CruiseComponent },
+    { path: 'cars', component: CarListComponent },
+    { path: 'sort', component: SortComponent },
     ]),
     BrowserAnimationsModule,
     SharedModule
@@ -42,6 +41,7 @@ import { SharedModule } from './shared/shared.module';
     HotelComponent,
     CruiseComponent,
     CarListComponent,
+    SortComponent,
   ],
   bootstrap: [AppComponent],
 })

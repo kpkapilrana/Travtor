@@ -1,43 +1,46 @@
 <!-- <p>Car Search component comes here</p>
 <p>On search button render Car Listing component</p>
 <p>Provide sort on cars</p> -->
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="outline">
+<form fxLayout="row wrap" fxLayoutGap="16px grid" [formGroup]="searchForm">
+    <mat-form-field fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" appearance="outline">
       <mat-label>Pick Up Location</mat-label>
-      <input matInput value="">
+      <input matInput value="" formControlName="pick_up_location">
+      <mat-error *ngIf="!f['pick_up_location'].valid && f['pick_up_location'].touched">
+        Pick up location is required
+      </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" appearance="outline">
         <mat-label>PICK UP DATE</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="pick_up_date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field appearance="outline">
+      <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" appearance="outline">
         <mat-label>DROP OFF DATE</mat-label>
-        <input matInput [matDatepicker]="picker2">
+        <input matInput [matDatepicker]="picker2" [min]="minDate" formControlName="drop_off_date">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" class="example-full-width" appearance="outline">
         <mat-label>PICK UP TIME</mat-label>
         <input type="text"
            placeholder="Pick one"
            aria-label="Number"
            matInput
-           [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" appearance="outline">
+           [matAutocomplete]="auto" formControlName="pick_up_time">
+      <mat-autocomplete  #auto="matAutocomplete" appearance="outline">
         <mat-option *ngFor="let slot of slots" [value]="slot">
           {{slot}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" appearance="outline">
         <mat-label>DROP OFF TIME</mat-label>
         <input type="text"
            placeholder="Pick one"
            aria-label="Number"
            matInput
-           [matAutocomplete]="auto">
+           [matAutocomplete]="auto" formControlName="drop_off_time">
     </mat-form-field>
       <mat-autocomplete #auto="matAutocomplete" appearance="outline">
         <mat-label>DROP OFF TIME</mat-label>
@@ -46,14 +49,14 @@
         </mat-option>
       </mat-autocomplete>  
     
-    <mat-form-field appearance="outline">
+    <mat-form-field fxFlex.xs="100%" fxFlex.sm="33%" appearance="outline">
         <mat-label>Age of Driver</mat-label>
-        <mat-select>
+        <mat-select formControlName="driver_age">
           <mat-option *ngFor="let age of ages" [value]="age">
             {{age}}
           </mat-option>
         </mat-select>
       </mat-form-field>
   </form>
-<button mat-raised-button color="primary">Search Rental Cars</button>
+<button mat-raised-button color="primary" (click)="onSearch()">Search Rental Cars</button>
 <router-outlet></router-outlet>

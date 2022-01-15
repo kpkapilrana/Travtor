@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tab } from '../shared/models/tab.model';
+import { Tabs } from './nav-bar.config';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,28 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  tabs: any[] = [
-    {
-      name: 'Cars',
-      url: '/',
-      icon: 'local_taxi',
-    },
-    {
-      name: 'Flights',
-      url: '/flight',
-      icon: 'flight',
-    },
-    {
-      name: 'Hotels',
-      url: '/hotel',
-      icon: 'hotel',
-    },
-    {
-      name: 'Cruises',
-      url: '/cruise',
-      icon: 'directions_boat',
-    },
-  ];
+  tabs: Tab[] = Tabs;
   constructor() {}
 
   ngOnInit(): void {}

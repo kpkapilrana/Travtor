@@ -12,6 +12,23 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from '@angular/material-moment-adapter';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'YYYY',
+  },
+};
 
 const MatModule =[
   MatButtonModule,
@@ -23,7 +40,12 @@ const MatModule =[
   MatSelectModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatDividerModule,
+  MatMomentDateModule,
+  MatRadioModule,
+  MatSnackBarModule,
+  MatButtonToggleModule
 ];
 
 @NgModule({
@@ -39,6 +61,9 @@ const MatModule =[
     ...MatModule,
     FlexLayoutModule,
     MatItemComponent
-  ]
+  ],
+    providers: [
+      {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: MY_FORMATS}
+    ]
 })
 export class SharedModule { }

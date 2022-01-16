@@ -4,7 +4,7 @@ import { car_list } from 'src/app/car-itineraries';
 import { environment } from 'src/environments/environment';
 import { Car } from '../models/car.model';
 import { Query, Search, Sort } from '../models/query.model';
-import * as _ from 'lodash';
+import {orderBy} from 'lodash';
 
 
 const intialQuery = {
@@ -63,26 +63,26 @@ export class CarService {
     switch(id){
       case 'price':
         if(sort_type === 'asc'){
-          updatedCar = _.orderBy(car_list,['fare.perDay'],['asc']);
+          updatedCar = orderBy(car_list,['fare.perDay'],['asc']);
       }else{
-        updatedCar = _.orderBy(car_list,['fare.perDay'],['desc']);
+        updatedCar = orderBy(car_list,['fare.perDay'],['desc']);
       }
       
         this.setCars(updatedCar);
         break;
       case 'rental_company':
         if(sort_type === 'asc'){
-        updatedCar = _.orderBy(car_list,['vehicle.name'],['asc']);
+        updatedCar = orderBy(car_list,['vehicle.name'],['asc']);
         }else{
-          updatedCar = _.orderBy(car_list,['vehicle.name'],['desc']);
+          updatedCar = orderBy(car_list,['vehicle.name'],['desc']);
         }
         this.setCars(updatedCar);
         break;
       case 'car_type':
           if(sort_type === 'asc'){
-              updatedCar = _.orderBy(car_list,['vehicle.type'],['asc']);
+              updatedCar = orderBy(car_list,['vehicle.type'],['asc']);
           }else{
-            updatedCar = _.orderBy(car_list,['vehicle.type'],['desc']);
+            updatedCar = orderBy(car_list,['vehicle.type'],['desc']);
           }
         this.setCars(updatedCar);
         break;

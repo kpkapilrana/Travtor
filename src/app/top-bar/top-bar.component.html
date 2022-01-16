@@ -25,16 +25,16 @@
 
     </div>
   </ng-template>
+  <ng-container *ngIf="(searchQuery$ |async ) as query ">
+    <div fxShow.sm fxHide.gt-md class="querytopBar" *ngIf="title === 'Travtor' && query?.search?.pick_up_location !== ''">
+      <div class="query" >
+        {{query?.search?.pick_up_location}} <br>
+        {{query?.search?.pick_up_date | date:'MMM d,'}}  {{query?.search?.pick_up_time}} - {{query?.search?.drop_off_date | date:'MMM d,'}} {{query?.search?.drop_off_time}}
+      </div>
+    </div>
+  </ng-container>
 </ng-container>
 
-<ng-container *ngIf="(searchQuery$ |async ) as query ">
-  <div fxShow.sm fxHide.gt-md class="querytopBar" *ngIf="query?.search?.pick_up_location !== ''">
-    <div class="query" >
-      {{query?.search?.pick_up_location}} <br>
-      {{query?.search?.pick_up_date | date:'MMM d,'}}  {{query?.search?.pick_up_time}} - {{query?.search?.drop_off_date | date:'MMM d,'}} {{query?.search?.drop_off_time}}
-    </div>
-  </div>
-</ng-container>
 <!-- fxShow.sm fxHide.md fxHide.lg -->
 <!-- 
 Copyright Google LLC. All Rights Reserved.

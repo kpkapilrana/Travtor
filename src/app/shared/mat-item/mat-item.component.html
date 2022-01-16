@@ -1,6 +1,6 @@
 <mat-card >
         <div class="row wrap">
-        <img fxFlex="25%" mat-card-md-image [src]="car.vehicle.image" >
+        <img fxFlex="30%" mat-card-md-image [src]="car.vehicle.image" >
         <mat-card-title-group fxFlex>
             <div class="row wrap">
           <mat-card-title>{{car.vehicle.type}}</mat-card-title>
@@ -13,12 +13,22 @@
         </div>
         <mat-card-content>
           <!-- {{longText}} -->
-       <div class="cancel">  {{  car.cancellationDetails.isCancellationFree ? 'Free Cancellation until '+ (car.cancellationDetails.freeCancellationEndDate | date:'EE, MMMM d, y') : 'Cancellation fees may apply' }} </div>
+       <!-- <div class="cancel">  {{  car.cancellationDetails.isCancellationFree ? 'Free Cancellation until '+ (car.cancellationDetails.freeCancellationEndDate | date:'EE, MMMM d, y') : 'Cancellation fees may apply' }} </div> -->
+          
+       
+       <div class="cancel"> 
+        <ng-container *ngIf="car.cancellationDetails.isCancellationFree; else fess">
+          <span class="perday">Free Cancellation </span>{{ 'until '+ (car.cancellationDetails.freeCancellationEndDate | date:'EE, MMMM d, y') }}
+        </ng-container> 
+        <ng-template #fess>
+          Cancellation fees may apply
+        </ng-template>
+        </div>
         </mat-card-content>
         <mat-divider></mat-divider>
         <mat-card-actions>
         <div> <b class="perday"> {{ car.fare.perDay | currency}} </b>  avg/day </div>
-        <div> Total (23 days) <b>{{ (car.fare.perDay*23) | currency }}</b> </div>
+        <div> Total (23 days) : <b>{{ (car.fare.perDay*23) | currency }}</b> </div>
             <!-- <button mat-button>LIKE</button>
             <button mat-button>SHARE</button> -->
           </mat-card-actions>

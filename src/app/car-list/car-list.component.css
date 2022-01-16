@@ -1,20 +1,19 @@
-.content {
+/* .content {
     padding: 16px;
-}
+} */
 
 .content > mat-card {
     width: 200px;
 }
 :host ::ng-deep .mat-button-toggle-label-content{
-    /* position: fixed; */
-    /* z-index: 1000; */
-    /* display: flex;
-    justify-content: center;
-    align-items: end;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    left: 0; */
     color: #3f51b5;
+}
+
+mat-button-toggle-group{
+    position: fixed;
+    bottom: 10%;
+    left: 40%;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
 }

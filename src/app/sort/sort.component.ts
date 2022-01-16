@@ -3,6 +3,7 @@ import { MatRadioChange } from '@angular/material/radio';
 import { Sort } from '../shared/models/sort.model';
 import { CarService } from '../shared/services/car.service';
 import { SORT_OPTION } from './sort.config';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sort',
@@ -12,7 +13,8 @@ import { SORT_OPTION } from './sort.config';
 export class SortComponent implements OnInit {
   sorts:Sort[]=SORT_OPTION;
   constructor(
-    private carService:CarService
+    private carService:CarService,
+    private translate: TranslateService
   ) {
    }
 

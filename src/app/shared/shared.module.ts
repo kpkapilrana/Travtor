@@ -10,13 +10,12 @@ import { MatItemComponent } from './mat-item/mat-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 export const MY_FORMATS = {
   parse: {
@@ -42,7 +41,6 @@ const MatModule =[
   MatNativeDateModule,
   MatAutocompleteModule,
   MatDividerModule,
-  MatMomentDateModule,
   MatRadioModule,
   MatSnackBarModule,
   MatButtonToggleModule
@@ -62,8 +60,8 @@ const MatModule =[
     FlexLayoutModule,
     MatItemComponent
   ],
-    providers: [
-      {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: MY_FORMATS}
-    ]
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+  ],
 })
 export class SharedModule { }

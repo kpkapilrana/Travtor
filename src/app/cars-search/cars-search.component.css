@@ -1,3 +1,8 @@
 :host ::ng-deep .mat-button-wrapper{
     color: white !important;
 }
+
+.mat-raised-button{
+    background-color: var(--secondary);
+    width: 100%;
+}

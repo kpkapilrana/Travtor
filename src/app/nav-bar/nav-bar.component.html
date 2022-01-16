@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
   <li class="nav-item" *ngFor="let tab of tabs">
     <a class="nav-link" routerLinkActive="nav-item active" aria-current="page" [routerLink]="[tab.url]" [routerLinkActiveOptions]={exact:true}
-      ><i class="material-icons"> {{ tab.icon }} </i>{{ tab.name }}</a
+      ><i class="material-icons"> {{ tab.icon }} </i>{{ tab.name | translate }}</a
     >
   </li>
 </ul>

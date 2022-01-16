@@ -1,27 +1,41 @@
 <ng-container *ngIf="(title$ | async) as title">
   <div class="topBar" *ngIf="title === 'Travtor'; else temp">
-    <a class="button"><i class="material-icons"> menu </i></a>
+    <a [routerLink]="['/']" class="button"><i class="material-icons"> menu </i></a>
     
     <a [routerLink]="['/']">
       <h2>{{ title }}</h2>
     </a>
-    <div class="query" *ngIf="(searchQuery$ |async ) as query">
-      {{query?.search?.pick_up_location}}
-      {{query?.search?.pick_up_date | date:'MMM d,'}}  {{query?.search?.pick_up_time}} - {{query?.search?.drop_off_date | date:'MMM d,'}} {{query?.search?.drop_off_time}}
-    </div>
+   
+      <ng-container *ngIf="(searchQuery$ |async ) as query">
+        <div fxHide fxShow.gt-sm  class="query1" *ngIf="query?.search?.pick_up_location !== ''">
+          {{query?.search?.pick_up_location}}
+          {{query?.search?.pick_up_date | date:'MMM d,'}}  {{query?.search?.pick_up_time}} - {{query?.search?.drop_off_date | date:'MMM d,'}} {{query?.search?.drop_off_time}}
+        </div>
+      </ng-container>
+       <a class="button"><i class="material-icons">shopping_cart</i></a>
   </div>
   
-  <ng-template #temp>
+  <ng-template #temp >
+    <div class="topBar">
       <a class="button" [routerLink]="['/cars']"><i class="material-icons"> arrow_back</i></a>
       
-      <a [routerLink]="['/']">
+      <a style="margin: 0 auto" [routerLink]="['/']">
         <h2>{{ title }}</h2>
       </a>
+
+    </div>
   </ng-template>
 </ng-container>
 
-<a class="button"><i class="material-icons">shopping_cart</i></a>
-
+<ng-container *ngIf="(searchQuery$ |async ) as query ">
+  <div fxShow.sm fxHide.gt-md class="querytopBar" *ngIf="query?.search?.pick_up_location !== ''">
+    <div class="query" >
+      {{query?.search?.pick_up_location}} <br>
+      {{query?.search?.pick_up_date | date:'MMM d,'}}  {{query?.search?.pick_up_time}} - {{query?.search?.drop_off_date | date:'MMM d,'}} {{query?.search?.drop_off_time}}
+    </div>
+  </div>
+</ng-container>
+<!-- fxShow.sm fxHide.md fxHide.lg -->
 <!-- 
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

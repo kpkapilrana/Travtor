@@ -14,6 +14,13 @@ import { CarListComponent } from './car-list/car-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { SortComponent } from './sort/sort.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 
 @NgModule({
@@ -30,7 +37,15 @@ import { SortComponent } from './sort/sort.component';
     { path: 'sort', component: SortComponent },
     ]),
     BrowserAnimationsModule,
-    SharedModule
+    HttpClientModule,
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
+  })
   ],
   declarations: [
     AppComponent,

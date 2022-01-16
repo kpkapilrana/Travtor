@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { car_list } from './car-itineraries';
 import { CarService } from './shared/services/car.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,12 @@ export class AppComponent implements OnDestroy {
   isHide: boolean =true;
   urls:string[]=['/cars','/sort'];
   subscription:Subscription;
-  constructor(private router:Router, private carService:CarService){
+  constructor(private router:Router, private carService:CarService, private translate: TranslateService){
+    translate.setDefaultLang('en');
     this.subscription=this.router.events
     .subscribe(
       (event: NavigationEvent) => {
         if(event instanceof NavigationStart) {
-          console.log(event);
           this.isHide = this.urls.includes(event.url) ? false :true;
           if(event.url=== '/sort'){
             const title = event.url.replace('/','')

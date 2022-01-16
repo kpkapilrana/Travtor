@@ -14,9 +14,19 @@
     font-size: 10px;
   }
   .perday{
-    color: green;
+    color: var(--pricing);
+    font-weight: bold;
   }
 
   .cancel{
     font-size: 11px;
+  }
+
+  mat-card-title{
+    color: var(--primary-text);
+    
+  }
+  mat-card-subtitle{
+    color: var(--secondary-text);
+    font-size: 14px;
   }

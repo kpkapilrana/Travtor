@@ -121,9 +121,10 @@ button:disabled {
 
 /* Top Bar */
 
-app-top-bar, .topBar{
+/* app-top-bar,  */
+.topBar, .querytopBar{
   width: 100%;
-  height: 68px;
+  height: 50px;
   background-color: var(--secondary);
   padding: 16px;
   display: flex;
@@ -132,11 +133,15 @@ app-top-bar, .topBar{
   align-items: center;
 }
 
-app-top-bar h2 {
+.topBar h2, .querytopBar h2 {
   color: white;
   margin: 0;
   font-weight: 400;
+  text-transform: capitalize;
 }
+/* .querytopBar{
+  display: none;
+} */
 
 /* Checkout Cart, Shipping Prices */
 

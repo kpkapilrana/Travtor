@@ -1,0 +1,47 @@
+{
+    "TABS":{
+        "CARS":"Cars",
+        "HOTELS":"Hotels",
+        "FLIGHTS":"Flights",
+        "CRUISES":"Cruises"
+
+    },
+    "SEARCH":{
+        "location":{
+            "label":"PICK UP LOCATION",
+            "validation_message":"Pick up location is required"
+        },
+        "pickup_date":{
+            "label":"PICK UP DATE",
+            "validation_message":"Invalid Pick Up Date"
+        },
+        "dropoff_date":{
+            "label":"DROP OFF DATE",
+            "validation_message":"Invalid Drop Off Date"
+        },
+        "pickup_time":{
+            "label":"PICK UP TIME"
+        },
+        "dropoff_time":{
+            "label":"DROP OFF TIME",
+            "validation_message":"Invalid Drop Off Slot"
+        },
+        "age":{
+            "label":"AGE OF DRIVER",
+            "validation_message":"Age should be 18+"
+        },
+        "search-btn":"Search Rental Cars"
+    },
+    "LIST":{
+        "sort_btn":"Sort",
+        "filter_btn":"Filter"
+    },
+    "SORT":{
+        "Price_Low":"Price: Lowest",
+        "Price_High":"Price: Highest",
+        "Rental_Asc":"Rental Company: A to Z",
+        "Rental_Desc":"Rental Company: Z to A",
+        "Type_Asc":"Car Type: A to Z",
+        "Type_Desc":"Car Type: Z to A"
+    }
+}

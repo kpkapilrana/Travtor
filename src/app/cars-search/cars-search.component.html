@@ -3,60 +3,68 @@
 <p>Provide sort on cars</p> -->
 <form fxLayout="row wrap" fxLayoutGap="16px grid" [formGroup]="searchForm">
     <mat-form-field fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" appearance="outline">
-      <mat-label>Pick Up Location</mat-label>
+      <mat-label>{{ 'SEARCH.location.label'|translate}}</mat-label>
       <input matInput value="" formControlName="pick_up_location">
       <mat-error *ngIf="!f['pick_up_location'].valid && f['pick_up_location'].touched">
-        Pick up location is required
+        {{ 'SEARCH.location.validation_message'|translate}}
       </mat-error>
     </mat-form-field>
     <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" appearance="outline">
-        <mat-label>PICK UP DATE</mat-label>
-        <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="pick_up_date">
+        <mat-label>{{ 'SEARCH.pickup_date.label'| translate}}</mat-label>
+        <input matInput [matDatepicker]="picker"  [min]="currentDate" [max]="maxDate" formControlName="pick_up_date" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="!f['pick_up_date'].valid && f['pick_up_date'].touched">
+          Invalid Pick Up Date
+        </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" appearance="outline">
-        <mat-label>DROP OFF DATE</mat-label>
+        <mat-label>{{ 'SEARCH.dropoff_date.label'| translate}}</mat-label>
         <input matInput [matDatepicker]="picker2" [min]="minDate" formControlName="drop_off_date">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="!f['drop_off_date'].valid && f['drop_off_date'].touched">
+          Invalid Drop Off Date
+        </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" class="example-full-width" appearance="outline">
-        <mat-label>PICK UP TIME</mat-label>
-        <input type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-           [matAutocomplete]="auto" formControlName="pick_up_time">
-      <mat-autocomplete  #auto="matAutocomplete" appearance="outline">
+        <mat-label>{{ 'SEARCH.pickup_time.label'| translate}}</mat-label>
+      <mat-select appearance="outline" formControlName="pick_up_time" [disabled]="isPickDate">
         <mat-option *ngFor="let slot of slots" [value]="slot">
           {{slot}}
         </mat-option>
-      </mat-autocomplete>
+      </mat-select>
     </mat-form-field>
       <mat-form-field fxFlex.xs="50%" fxFlex.sm="33%" appearance="outline">
-        <mat-label>DROP OFF TIME</mat-label>
-        <input type="text"
-           placeholder="Pick one"
-           aria-label="Number"
-           matInput
-           [matAutocomplete]="auto" formControlName="drop_off_time">
+        <mat-label> {{ 'SEARCH.dropoff_time.label'| translate}}</mat-label>
+           <mat-select  appearance="outline" formControlName="drop_off_time" [disabled]="isDropDate">
+             <mat-option *ngFor="let slot of slots" [value]="slot">
+               {{slot}}
+             </mat-option>
+           </mat-select>
+           <mat-error *ngIf="!f['drop_off_time'].valid && f['drop_off_time'].touched">
+            {{ 'SEARCH.dropoff_time.validation_message'| translate}}
+          </mat-error> 
     </mat-form-field>
-      <mat-autocomplete #auto="matAutocomplete" appearance="outline">
-        <mat-label>DROP OFF TIME</mat-label>
-        <mat-option *ngFor="let slot of slots" [value]="slot">
-          {{slot}}
-        </mat-option>
-      </mat-autocomplete>  
     
     <mat-form-field fxFlex.xs="100%" fxFlex.sm="33%" appearance="outline">
-        <mat-label>Age of Driver</mat-label>
+        <mat-label> {{ 'SEARCH.age.label' | translate}}</mat-label>
         <mat-select formControlName="driver_age">
           <mat-option *ngFor="let age of ages" [value]="age">
             {{age}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="!f['driver_age'].valid && f['driver_age'].touched">
+          {{ 'SEARCH.age.validation_message'| translate}}
+        </mat-error> 
       </mat-form-field>
   </form>
-<button mat-raised-button color="primary" (click)="onSearch()">Search Rental Cars</button>
+  <div fxLayout="row wrap">
+    <button fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="100%" mat-raised-button [disabled]="searchForm.invalid" (click)="onSearch()">
+      
+      {{
+        'SEARCH.search-btn'| translate
+      }}
+    </button>
+  </div>
 <router-outlet></router-outlet>

@@ -59,29 +59,30 @@ export class CarService {
   sortData(value:Sort){
     const {id,sort_type}=value;
     let updatedCar:Car[];
+    const car_list = this.cars.value;
     switch(id){
       case 'price':
         if(sort_type === 'asc'){
-          updatedCar = _.orderBy(car_list.CarItineraries,['fare.perDay'],['asc']);
+          updatedCar = _.orderBy(car_list,['fare.perDay'],['asc']);
       }else{
-        updatedCar = _.orderBy(car_list.CarItineraries,['fare.perDay'],['desc']);
+        updatedCar = _.orderBy(car_list,['fare.perDay'],['desc']);
       }
       
         this.setCars(updatedCar);
         break;
       case 'rental_company':
         if(sort_type === 'asc'){
-        updatedCar = _.orderBy(car_list.CarItineraries,['vehicle.name'],['asc']);
+        updatedCar = _.orderBy(car_list,['vehicle.name'],['asc']);
         }else{
-          updatedCar = _.orderBy(car_list.CarItineraries,['vehicle.name'],['desc']);
+          updatedCar = _.orderBy(car_list,['vehicle.name'],['desc']);
         }
         this.setCars(updatedCar);
         break;
       case 'car_type':
           if(sort_type === 'asc'){
-              updatedCar = _.orderBy(car_list.CarItineraries,['vehicle.type'],['asc']);
+              updatedCar = _.orderBy(car_list,['vehicle.type'],['asc']);
           }else{
-            updatedCar = _.orderBy(car_list.CarItineraries,['vehicle.type'],['desc']);
+            updatedCar = _.orderBy(car_list,['vehicle.type'],['desc']);
           }
         this.setCars(updatedCar);
         break;

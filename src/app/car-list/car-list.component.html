@@ -1,14 +1,14 @@
+
 <div class="content">
-    <!-- <h1>Cars List</h1> -->
-<div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="100%">cars found</div>
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of (cars$|async)">
+<div fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="(cars$|async) as cars">
+    <div fxFlex="100%"> {{cars?.length}} cars found</div>
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of cars">
         <app-mat-item [car]="car"></app-mat-item>
     </div>
 </div>
 <!-- <button mat-raised-button color="primary" (click)="onSort()">Sort</button> -->
-<mat-button-toggle-group color="primary" class="floatButton" name="fontStyle" aria-label="Font Style" (change)="onSort($event)">
-    <mat-button-toggle value="sort">Sort</mat-button-toggle>
-    <mat-button-toggle value="italic">Filter</mat-button-toggle>
-  </mat-button-toggle-group>
 </div>
+<mat-button-toggle-group class="mat-elevation-z5" color="primary" class="floatButton" name="fontStyle" aria-label="Font Style" (change)="onSort($event)">
+    <mat-button-toggle value="sort">{{ 'LIST.sort_btn' | translate}}</mat-button-toggle>
+    <mat-button-toggle value="filter">{{ 'LIST.filter_btn' | translate}}</mat-button-toggle>
+  </mat-button-toggle-group>

@@ -2,6 +2,6 @@
   aria-labelledby="example-radio-group-label"
   fxLayout="row wrap" fxLayoutGap="16px grid" (change)="onChange($event)">
   <mat-radio-button fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let sort of sorts" [value]="sort">
-    {{sort.name}}
+    {{sort.name | translate}}
   </mat-radio-button>
 </mat-radio-group>

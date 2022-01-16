@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/Travtor",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

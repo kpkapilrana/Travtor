@@ -11,10 +11,18 @@ static validateDropOffTime(controlName1: string, controlName2: string,controlNam
       const control4 = formGroup.controls[controlName4];
     
       if(new Date(pick_date).getTime() == new Date(drop_date).getTime()){
-        const pick_time = control3.value;
-        const drop_time = control4.value;
-        if(pick_time == drop_time){
-            control4.setErrors({invalidSlot:true})
+        const pick_time = '11/24/2014 '+ control3.value;
+        const drop_time ='11/24/2014 '+control4.value;
+        console.log("Time",pick_time,drop_time);
+        
+        const date1 =  new Date(pick_time).getTime();
+        const date2 = new Date(drop_time).getTime();
+        if(date1 < date2){
+            control4.setErrors(null);
+        }else if (date1 > date2){
+            control4.setErrors({invalidSlot:true});
+        }else{
+            control4.setErrors({invalidSlot:true});
         }
       }
   }

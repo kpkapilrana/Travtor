@@ -1,3 +1,4 @@
-# angular-hqhbk4-23zqbt
-
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-hqhbk4-23zqbt)
+Steps to Follow for Setup & Run Assignment
+1. Clone the Repo
+2. npm install
+3. npm start / ng serve
